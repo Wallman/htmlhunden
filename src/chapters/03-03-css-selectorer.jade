@@ -1,11 +1,12 @@
 .page-header
   h2 Selektorer
 h3 Vanliga selektorer och atttribut
-p Man kan ju tycka att det borde räcka med att kunna hänvisa till element bara via deras typ, klass eller typer. Detta är dock inte sant, suck! Det går att använda att komma åt element på andra sätt och detta gör det lättare man slipper sätta klass eller id på allt. Nedanför finner ni olika selektorer och exempel. Observera att det finns flera....Never ending story! 
+p Man kan ju tycka att det borde räcka med att kunna hänvisa till element bara via deras typ, klass eller typer. Detta är dock inte sant, suck! Det går att komma åt element på andra sätt och detta gör det lättare - man slipper sätta klass eller id på allt. Nedanför finner ni olika selektorer och exempel. Observera att det finns flera....Never ending story!
 h4 Selektor: *
 .panel.panel-default
-  .panel-heading Exempel på HTML och CSS med * 
+  .panel-heading Exempel på HTML och CSS med *
   .panel-body
+    p * står i detta fall för <emp>alla</emp> element.
     pre
       code.language-markup
         | &lt;h2&gt;En rubrik, yay!&lt;/h2&gt;
@@ -13,24 +14,35 @@ h4 Selektor: *
     pre
       code.language-css
         | *{
-        |   font-size: 24px; 
+        |   font-size: 24px;
         |   background:#ff6600;
         |  }
+    .panel.panel-default
+      .panel-heading Resultat
+      .panel-body(style="background:#ff6600;")
+        p(style="font-size: 24px;") En rubrik, yay!
+        p(style="font-size: 24px;") En paragraf, yay!
 
 h4 Selektor: E
 .panel.panel-default
-  .panel-heading Exempel på HTML och CSS med E 
+  .panel-heading Exempel på HTML och CSS med E
   .panel-body
-    p E står i detta fall att man använder elementets typ som selektor. 
+    p Man kan också kategorisera efter elementets <emp>typ</emp>. I exemplet nedan är E av typen <code>p</code>.
     pre
       code.language-markup
         | &lt;p&gt;En paragraf, yay!&lt;/p&gt;
     pre
       code.language-css
         | p{
-        |   font-size: 24px; 
+        |   font-size: 24px;
         |   background:#ff6600;
         | }
+    .panel.panel-default
+      .panel-heading Resultat
+      .panel-body
+        p(style="font-size: 24px; background-color:#ff6600;") En paragraf, yay!
+
+
 h3 PseudoKlasser
 
 h4 E:link
@@ -45,6 +57,10 @@ h4 E:link
         | a:link{
         |   color:pink;
         | }
+    .panel.panel-default
+      .panel-heading Resultat
+      .panel-body
+        a(href="http://htmlhunden.se", style="color:pink;") Värsta grymma grejen!
 
 h4 E:visited
 .panel.panel-default
@@ -56,24 +72,37 @@ h4 E:visited
     pre
       code.language-css
         | a:visited{
-        |   color:blue;
+        |   color:green;
         | }
+    .panel.panel-default
+      .panel-heading Resultat
+      .panel-body
+          a(href="http://htmlhunden.se", style="color:green;") Värsta grymma grejen!
+
 h4 E:hover
 .panel.panel-default
   .panel-heading Exempel på element som har muspekaren över sig.
   .panel-body
+    p Kan användas på alla element, inte bara länkar.
     pre
       code.language-markup
         | &lt;a href="http://htmlhunden.se"&gt;Värsta grymma grejen!&lt;/p&gt;
     pre
       code.language-css
         | a:hover{
-        |   color:green;
+        |   color:red;
+        |   background-color: yellow;
         | }
+    .panel.panel-default
+      .panel-heading Resultat
+      .panel-body
+          a(href="http://htmlhunden.se", id="hover-example") Värsta grymma grejen!
+
 h4 E:active
 .panel.panel-default
-  .panel-heading Exempel på länk som är aktivt (exempelvis när användaren trycker ner knappen)
+  .panel-heading Exempel på länk som är aktiv, när användaren trycker ner knappen.
   .panel-body
+    p Kan användas på alla element, inte bara länkar.
     pre
       code.language-markup
         | &lt;a href="http://htmlhunden.se"&gt;Värsta grymma grejen!&lt;/p&gt;
@@ -82,12 +111,17 @@ h4 E:active
         | a:active{
         |   color:purple;
         | }
+    .panel.panel-default
+      .panel-heading Resultat
+      .panel-body
+          a(href="", id="active-example") Värsta grymma grejen!
+
 h3 Kombinationer
 h4 E F
 .panel.panel-default
   .panel-heading Exempel på referens till extern stilmall
   .panel-body
-    p Alla element F som kommer efter E. Alltså i detta fall alla fyra första paragrafer. 
+    p Alla element F som kommer efter E. Alltså i detta fall alla fyra första paragrafer.
     pre
       code.language-markup
         | &lt;div class="yttre"&gt;
@@ -103,11 +137,19 @@ h4 E F
         | .yttre p{
         |   color:pink;
         | }
+    .panel.panel-default
+      .panel-heading Resultat
+      .panel-body
+         p(style="color:pink;") En första paragraf!
+         p(style="color:pink;") En andra paragraf!
+         p(style="color:pink;") En tredje paragraf!
+         p(style="color:pink;") En fjärde paragraf!
+
 h4 E+F
 .panel.panel-default
   .panel-heading Exempel på referens till extern stilmall
   .panel-body
-    p alla element som direkt föregås av E. Alltså i detta fall kommer andra och tredje paragrafen att påverkas. 
+    p alla element som direkt föregås av E. Alltså i detta fall kommer andra och tredje paragrafen att påverkas.
     pre
       code.language-markup
         | &lt;div class="yttre"&gt;
@@ -123,10 +165,17 @@ h4 E+F
         | p + p{
         |   color:pink;
         | }
+    .panel.panel-default
+      .panel-heading Resultat
+      .panel-body
+        p En första paragraf!
+        p(style="color:pink;") En andra paragraf!
+        p(style="color:pink;") En tredje paragraf!
+        p  En fjärde paragraf!
 
-h4 E > F 
+h4 E > F
 .panel.panel-default
-  .panel-heading Exempel på element som är direkt barn av ett annat element. 
+  .panel-heading Exempel på element som är direkt barn av ett annat element.
   .panel-body
     p Anta att vi har följande html...
     pre
